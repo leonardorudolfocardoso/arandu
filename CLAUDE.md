@@ -43,7 +43,8 @@ Optional `/projects` page for expanded project listing.
 
 ## Git Conventions
 
-Do not add `Co-Authored-By` trailers to commits.
+- Use semantic commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `chore:`, etc.)
+- Do not add `Co-Authored-By` trailers
 
 ## Components to Build
 
