@@ -1,9 +1,7 @@
 ---
-interface Props {
-  name: string;
-  description: string;
-  tags: string[];
-}
+import type { Project } from '../data/projects';
+
+type Props = Project;
 
 const { name, description, tags } = Astro.props;
 ---
