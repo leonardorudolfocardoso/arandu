@@ -32,12 +32,12 @@ import { projects } from '../data/projects';
       </p>
     </Section>
 
-    <Section title="Links">
+    <footer class="footer">
       <nav class="links" aria-label="Social links">
         <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://linkedin.com/in/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </nav>
-    </Section>
+    </footer>
 
   </Container>
 </Layout>
@@ -90,19 +90,24 @@ import { projects } from '../data/projects';
     line-height: 1.8;
   }
 
-  /* Links */
+  /* Footer */
+  .footer {
+    padding-block: 2rem 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
   .links {
     display: flex;
     gap: 2rem;
   }
 
   .links a {
-    font-size: 0.9rem;
-    color: var(--color-text);
+    font-size: 0.85rem;
+    color: var(--color-muted);
     transition: color var(--transition);
   }
 
   .links a:hover {
-    color: var(--color-accent);
+    color: var(--color-text);
   }
 </style>
