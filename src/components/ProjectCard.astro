@@ -1,0 +1,56 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  tags: string[];
+}
+
+const { name, description, tags } = Astro.props;
+---
+
+<article class="card">
+  <h3 class="card-name">{name}</h3>
+  <p class="card-description">{description}</p>
+  <ul class="card-tags">
+    {tags.map((tag) => <li class="card-tag">{tag}</li>)}
+  </ul>
+</article>
+
+<style>
+  .card {
+    padding: 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: border-color var(--transition);
+  }
+
+  .card:hover {
+    border-color: var(--color-accent);
+  }
+
+  .card-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 1rem;
+  }
+
+  .card-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .card-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+  }
+</style>
