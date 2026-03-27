@@ -3,19 +3,20 @@ import type { Project } from '../data/projects';
 
 type Props = Project;
 
-const { name, description, tags } = Astro.props;
+const { slug, name, description, tags } = Astro.props;
 ---
 
-<article class="card">
+<a href={`/projects/${slug}`} class="card">
   <h3 class="card-name">{name}</h3>
   <p class="card-description">{description}</p>
-  <ul class="card-tags">
-    {tags.map((tag) => <li class="card-tag">{tag}</li>)}
+  <ul class="tag-list">
+    {tags.map((tag) => <li class="tag">{tag}</li>)}
   </ul>
-</article>
+</a>
 
 <style>
   .card {
+    display: block;
     padding: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 6px;
@@ -39,16 +40,4 @@ const { name, description, tags } = Astro.props;
     margin-bottom: 1rem;
   }
 
-  .card-tags {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .card-tag {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--color-accent);
-  }
 </style>

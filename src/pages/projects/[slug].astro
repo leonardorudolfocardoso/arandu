@@ -1,0 +1,111 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Container from '../../components/Container.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.name} — Arandu`} description={project.description}>
+  <Container>
+    <article class="project">
+
+      <header class="project-header">
+        <a href="/" class="back">← Back</a>
+        <h1 class="project-name">{project.name}</h1>
+        <p class="project-description">{project.description}</p>
+      </header>
+
+      <section class="project-body">
+        <p>{project.body}</p>
+      </section>
+
+      <footer class="project-footer">
+        <ul class="tag-list">
+          {project.tags.map((tag) => <li class="tag">{tag}</li>)}
+        </ul>
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="github-link"
+        >
+          View on GitHub →
+        </a>
+      </footer>
+
+    </article>
+  </Container>
+</Layout>
+
+<style>
+  .project {
+    padding-block: 4rem;
+  }
+
+  .back {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    transition: color var(--transition);
+    display: inline-block;
+    margin-bottom: 2rem;
+  }
+
+  .back:hover {
+    color: var(--color-text);
+  }
+
+  .project-name {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .project-description {
+    font-size: 1rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .project-body {
+    margin-block: 2.5rem;
+    padding-block: 2.5rem;
+    border-block: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .project-body p {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  .project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .github-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color var(--transition);
+  }
+
+  .github-link:hover {
+    color: var(--color-accent);
+  }
+</style>
