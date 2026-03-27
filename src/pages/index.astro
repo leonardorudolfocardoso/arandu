@@ -1,17 +1,107 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Container from '../components/Container.astro';
+import Section from '../components/Section.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <Container>
+
+    <Section>
+      <div class="hero">
+        <p class="hero-label">Arandu</p>
+        <h1 class="hero-headline">Systems, APIs and developer tools</h1>
+        <p class="hero-by">by Leonardo Cardoso</p>
+        <p class="hero-sub">Backend & Cloud Engineer focused on building reliable systems.</p>
+      </div>
+    </Section>
+
+    <Section title="Selected Work">
+      <div class="projects">
+        {projects.map((project) => <ProjectCard {...project} />)}
+      </div>
+    </Section>
+
+    <Section title="About">
+      <p class="about">
+        I build backend systems and developer tools with a focus on reliability,
+        clarity and real-world use cases. Currently focused on Python, AWS and
+        distributed systems.
+      </p>
+    </Section>
+
+    <Section title="Links">
+      <nav class="links" aria-label="Social links">
+        <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://linkedin.com/in/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </nav>
+    </Section>
+
+  </Container>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    padding-block: 5rem 2rem;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .hero-by {
+    font-size: 1rem;
+    color: var(--color-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+
+  /* Projects grid */
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  /* About */
+  .about {
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    max-width: 520px;
+    line-height: 1.8;
+  }
+
+  /* Links */
+  .links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .links a {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    transition: color var(--transition);
+  }
+
+  .links a:hover {
+    color: var(--color-accent);
+  }
+</style>
