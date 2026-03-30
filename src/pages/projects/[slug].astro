@@ -16,31 +16,62 @@ const { project } = Astro.props;
 <Layout title={`${project.name} — Arandu`} description={project.description}>
   <Container>
     <article class="project">
-
       <header class="project-header">
         <a href="/" class="back">← Back</a>
         <h1 class="project-name">{project.name}</h1>
         <p class="project-description">{project.description}</p>
-      </header>
-
-      <section class="project-body">
-        <p>{project.body}</p>
-      </section>
-
-      <footer class="project-footer">
         <ul class="tag-list">
           {project.tags.map((tag) => <li class="tag">{tag}</li>)}
         </ul>
+      </header>
+
+      <section class="project-summary">
+        <div class="summary-card">
+          <p class="eyebrow eyebrow-primary">Overview</p>
+          <p>{project.overview}</p>
+        </div>
+      </section>
+
+      <section class="project-sections">
+        <div class="project-section">
+          <p class="eyebrow">Problem</p>
+          <p>{project.problem}</p>
+        </div>
+
+        <div class="project-section">
+          <p class="eyebrow">Approach</p>
+          <p>{project.approach}</p>
+        </div>
+      </section>
+
+      <section class="project-decisions">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow-primary">Engineering Decisions</p>
+          <p class="section-copy">
+            The most important design choices behind the project and why they matter.
+          </p>
+        </div>
+
+        <div class="decision-grid">
+          {project.decisions.map((decision) => (
+            <article class="decision-card">
+              <h2>{decision.title}</h2>
+              <p>{decision.detail}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <footer class="project-footer">
         <a
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
           class="github-link"
         >
-          View on GitHub →
+          View source on GitHub →
         </a>
       </footer>
-
     </article>
   </Container>
 </Layout>
@@ -50,62 +81,174 @@ const { project } = Astro.props;
     padding-block: 4rem;
   }
 
+  .project-header {
+    display: grid;
+    gap: 0.9rem;
+  }
+
   .back {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--color-muted);
+    font-size: 0.85rem;
+    color: var(--color-text);
     transition: color var(--transition);
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
 
   .back:hover {
-    color: var(--color-text);
+    color: var(--color-accent);
   }
 
   .project-name {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 6vw, 4rem);
     font-weight: 600;
     color: var(--color-text);
-    margin-bottom: 0.75rem;
+    line-height: 1.05;
+    margin-bottom: 0.25rem;
   }
 
   .project-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
+    color: var(--color-text);
+    max-width: 58ch;
+    line-height: 1.8;
+  }
+
+  .project-header .tag-list {
+    gap: 0.6rem;
+  }
+
+  .project-header .tag {
+    padding: 0.28rem 0.55rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
     color: var(--color-muted);
-    max-width: 520px;
-    line-height: 1.7;
   }
 
-  .project-body {
-    margin-block: 2.5rem;
-    padding-block: 2.5rem;
-    border-block: 1px solid rgba(255, 255, 255, 0.06);
+  .project-summary {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .project-body p {
-    font-size: 0.95rem;
+  .summary-card,
+  .project-section,
+  .decision-card {
+    background: none;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .summary-card {
+    padding: 0;
+  }
+
+  .summary-card p:last-child,
+  .project-section p:last-child,
+  .decision-card p {
+    font-size: 0.98rem;
     color: var(--color-muted);
     line-height: 1.8;
-    max-width: 560px;
+    max-width: 62ch;
+  }
+
+  .project-sections {
+    display: grid;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .project-section {
+    padding: 0;
+  }
+
+  .eyebrow {
+    margin-bottom: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .eyebrow-primary {
+    color: var(--color-accent);
+  }
+
+  .project-decisions {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .section-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-copy {
+    max-width: 58ch;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .decision-grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .decision-card {
+    padding: 1.25rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .decision-card h2 {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
   }
 
   .project-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .github-link {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: var(--color-text);
-    transition: color var(--transition);
+    transition:
+      color var(--transition),
+      transform var(--transition);
   }
 
   .github-link:hover {
     color: var(--color-accent);
+    transform: translateX(2px);
+  }
+
+  @media (min-width: 800px) {
+    .project-sections {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .project {
+      padding-block: 3.5rem;
+    }
+
+    .project-name {
+      max-width: none;
+    }
   }
 </style>

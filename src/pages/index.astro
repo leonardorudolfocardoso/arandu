@@ -4,8 +4,6 @@ import Container from '../components/Container.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
-
-const projectCount = projects.length;
 ---
 
 <Layout
@@ -29,50 +27,13 @@ const projectCount = projects.length;
         </p>
 
         <div class="hero-actions">
-          <a href="mailto:leonardorudolfocardoso@gmail.com" class="button button-primary">Email me</a>
-          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer" class="button button-secondary">GitHub</a>
+          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer" class="button button-primary">GitHub</a>
           <a href="https://www.linkedin.com/in/leonardo-rudolfo-cardoso-a8b420183/" target="_blank" rel="noopener noreferrer" class="button button-secondary">LinkedIn</a>
         </div>
-
-        <ul class="proof-list" aria-label="Highlights">
-          <li>{projectCount} featured projects</li>
-          <li>Python, Rust, TypeScript</li>
-          <li>AWS, APIs, distributed systems</li>
-        </ul>
-      </div>
-    </Section>
-
-    <Section title="What I Work On">
-      <div class="focus-grid">
-        <article class="focus-card">
-          <h3>Reliable backends</h3>
-          <p>
-            Services designed for correctness, resilience, and clean operational
-            behavior under real load.
-          </p>
-        </article>
-        <article class="focus-card">
-          <h3>Developer tooling</h3>
-          <p>
-            CLIs and workflow tooling that reduce friction, expose useful guarantees,
-            and fit naturally into CI/CD.
-          </p>
-        </article>
-        <article class="focus-card">
-          <h3>Thoughtful architecture</h3>
-          <p>
-            I care about boundaries, type safety, failure modes, and choosing the
-            simplest design that scales.
-          </p>
-        </article>
       </div>
     </Section>
 
     <Section title="Selected Work">
-      <p class="section-intro">
-        A few projects that best represent how I approach systems design, API
-        boundaries, async processing, and developer experience.
-      </p>
       <div class="projects">
         {projects.map((project) => <ProjectCard {...project} />)}
       </div>
@@ -103,7 +64,9 @@ const projectCount = projects.length;
       <nav class="links" aria-label="Social links">
         <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/leonardo-rudolfo-cardoso-a8b420183/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="mailto:leonardorudolfocardoso@gmail.com">Email</a>
       </nav>
+      <p class="footer-copy">© 2026 Leonardo Cardoso</p>
     </footer>
 
   </Container>
@@ -151,7 +114,6 @@ const projectCount = projects.length;
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    margin-bottom: 1.5rem;
   }
 
   .button {
@@ -194,62 +156,11 @@ const projectCount = projects.length;
     color: var(--color-accent);
   }
 
-  .proof-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .proof-list li {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 999px;
-    padding: 0.4rem 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--color-muted);
-  }
-
-  .focus-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-  }
-
-  .focus-card {
-    padding: 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    background:
-      linear-gradient(180deg, rgba(126, 231, 135, 0.05), transparent 45%),
-      rgba(255, 255, 255, 0.01);
-  }
-
-  .focus-card h3 {
-    font-size: 0.98rem;
-    margin-bottom: 0.6rem;
-    color: var(--color-text);
-  }
-
-  .focus-card p {
-    font-size: 0.92rem;
-    line-height: 1.7;
-    color: var(--color-muted);
-  }
-
   /* Projects grid */
-  .section-intro {
-    max-width: 58ch;
-    margin-bottom: 1.25rem;
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--color-muted);
-  }
-
   .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   /* About */
@@ -265,10 +176,8 @@ const projectCount = projects.length;
     gap: 1rem;
     padding: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
+    border-left: 2px solid var(--color-accent);
     border-radius: 12px;
-    background:
-      radial-gradient(circle at top left, rgba(126, 231, 135, 0.08), transparent 35%),
-      rgba(255, 255, 255, 0.01);
   }
 
   .contact-copy {
@@ -285,6 +194,11 @@ const projectCount = projects.length;
 
   /* Footer */
   .footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
     padding-block: 2rem 3rem;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
@@ -302,6 +216,12 @@ const projectCount = projects.length;
 
   .links a:hover {
     color: var(--color-text);
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-muted);
   }
 
   @media (max-width: 640px) {
