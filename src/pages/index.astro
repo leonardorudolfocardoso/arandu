@@ -4,22 +4,75 @@ import Container from '../components/Container.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
+
+const projectCount = projects.length;
 ---
 
-<Layout>
+<Layout
+  title="Leonardo Cardoso | Backend Engineer"
+  description="Backend engineer building reliable systems, APIs, and developer tools with Python, Rust, AWS, and distributed systems."
+>
   <Container>
 
     <Section>
       <div class="hero">
-        <p class="hero-label">Arandu</p>
-        <h1 class="hero-headline">Systems, APIs and developer tools</h1>
-        <p class="hero-by">by Leonardo Cardoso</p>
-        <p class="hero-sub">Arandu is knowledge, in Tupi-Guarani.</p>
-        <p class="hero-claim">This is mine.</p>
+        <p class="hero-label">Leonardo Cardoso</p>
+        <h1 class="hero-headline">Backend engineer building reliable systems, APIs, and developer tools</h1>
+        <p class="hero-lead">
+          I design pragmatic software for real production constraints: asynchronous
+          workflows, event-driven systems, cloud infrastructure, and developer
+          experience.
+        </p>
+        <p class="hero-sub">
+          Arandu means knowledge in Tupi-Guarani. This is where I show how I think,
+          what I build, and the engineering tradeoffs behind it.
+        </p>
+
+        <div class="hero-actions">
+          <a href="mailto:leonardorudolfocardoso@gmail.com" class="button button-primary">Email me</a>
+          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer" class="button button-secondary">GitHub</a>
+          <a href="https://www.linkedin.com/in/leonardo-rudolfo-cardoso-a8b420183/" target="_blank" rel="noopener noreferrer" class="button button-secondary">LinkedIn</a>
+        </div>
+
+        <ul class="proof-list" aria-label="Highlights">
+          <li>{projectCount} featured projects</li>
+          <li>Python, Rust, TypeScript</li>
+          <li>AWS, APIs, distributed systems</li>
+        </ul>
+      </div>
+    </Section>
+
+    <Section title="What I Work On">
+      <div class="focus-grid">
+        <article class="focus-card">
+          <h3>Reliable backends</h3>
+          <p>
+            Services designed for correctness, resilience, and clean operational
+            behavior under real load.
+          </p>
+        </article>
+        <article class="focus-card">
+          <h3>Developer tooling</h3>
+          <p>
+            CLIs and workflow tooling that reduce friction, expose useful guarantees,
+            and fit naturally into CI/CD.
+          </p>
+        </article>
+        <article class="focus-card">
+          <h3>Thoughtful architecture</h3>
+          <p>
+            I care about boundaries, type safety, failure modes, and choosing the
+            simplest design that scales.
+          </p>
+        </article>
       </div>
     </Section>
 
     <Section title="Selected Work">
+      <p class="section-intro">
+        A few projects that best represent how I approach systems design, API
+        boundaries, async processing, and developer experience.
+      </p>
       <div class="projects">
         {projects.map((project) => <ProjectCard {...project} />)}
       </div>
@@ -28,9 +81,22 @@ import { projects } from '../data/projects';
     <Section title="About">
       <p class="about">
         I build backend systems and developer tools with a focus on reliability,
-        clarity and real-world use cases. Currently focused on Python, AWS and
-        distributed systems.
+        clarity, and real-world constraints. My recent work spans Python services,
+        Rust CLIs, AWS serverless systems, and LLM-backed workflows with strong
+        validation and operational discipline.
       </p>
+    </Section>
+
+    <Section title="Contact">
+      <div class="contact-panel">
+        <p class="contact-copy">
+          If you are hiring for backend, platform, or developer tooling work, I am
+          open to conversations about full-time roles and collaborative projects.
+        </p>
+        <div class="contact-actions">
+          <a href="mailto:leonardorudolfocardoso@gmail.com" class="button button-primary">leonardorudolfocardoso@gmail.com</a>
+        </div>
+      </div>
     </Section>
 
     <footer class="footer">
@@ -57,33 +123,129 @@ import { projects } from '../data/projects';
   }
 
   .hero-headline {
-    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.05;
     color: var(--color-text);
     margin-bottom: 1rem;
   }
 
-  .hero-by {
-    font-size: 1rem;
-    font-weight: 500;
+  .hero-lead {
+    max-width: 58ch;
+    font-size: 1.05rem;
     color: var(--color-text);
-    margin-bottom: 0.5rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
   }
 
   .hero-sub {
+    max-width: 58ch;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
     font-size: 0.9rem;
+    font-weight: 500;
+    transition:
+      border-color var(--transition),
+      background-color var(--transition),
+      color var(--transition),
+      transform var(--transition);
+  }
+
+  .button:hover {
+    transform: translateY(-1px);
+  }
+
+  .button-primary {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: #0b0f14;
+  }
+
+  .button-primary:hover {
+    background: #98f0a0;
+    border-color: #98f0a0;
+  }
+
+  .button-secondary {
+    color: var(--color-text);
+  }
+
+  .button-secondary:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .proof-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .proof-list li {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    padding: 0.4rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     color: var(--color-muted);
   }
 
-  .hero-claim {
-    font-size: 0.9rem;
-    font-weight: 500;
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .focus-card {
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    background:
+      linear-gradient(180deg, rgba(126, 231, 135, 0.05), transparent 45%),
+      rgba(255, 255, 255, 0.01);
+  }
+
+  .focus-card h3 {
+    font-size: 0.98rem;
+    margin-bottom: 0.6rem;
     color: var(--color-text);
-    margin-top: 0.25rem;
+  }
+
+  .focus-card p {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--color-muted);
   }
 
   /* Projects grid */
+  .section-intro {
+    max-width: 58ch;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-muted);
+  }
+
   .projects {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -92,10 +254,33 @@ import { projects } from '../data/projects';
 
   /* About */
   .about {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     color: var(--color-muted);
-    max-width: 520px;
+    max-width: 60ch;
     line-height: 1.8;
+  }
+
+  .contact-panel {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    background:
+      radial-gradient(circle at top left, rgba(126, 231, 135, 0.08), transparent 35%),
+      rgba(255, 255, 255, 0.01);
+  }
+
+  .contact-copy {
+    max-width: 58ch;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   /* Footer */
@@ -117,5 +302,15 @@ import { projects } from '../data/projects';
 
   .links a:hover {
     color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-block: 4rem 1rem;
+    }
+
+    .hero-headline {
+      max-width: none;
+    }
   }
 </style>
