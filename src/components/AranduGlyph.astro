@@ -1,0 +1,20 @@
+---
+interface Props {
+  size?: number;
+}
+
+const { size = 48 } = Astro.props;
+const strokeWidth = (2 * 60) / size;
+---
+
+<svg width={size} height={size} viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <g stroke="#7EE787" stroke-width={strokeWidth} stroke-linecap="round">
+    <line x1="15" y1="40" x2="30" y2="20" />
+    <line x1="30" y1="20" x2="45" y2="40" />
+    <line x1="22" y1="30" x2="38" y2="30" />
+  </g>
+  <circle cx="15" cy="40" r="3.5" fill="#7EE787" />
+  <circle cx="30" cy="20" r="3.5" fill="#7EE787" />
+  <circle cx="45" cy="40" r="3.5" fill="#7EE787" />
+  <circle cx="38" cy="30" r="3" fill="#7EE787" />
+</svg>

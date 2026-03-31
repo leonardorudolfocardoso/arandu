@@ -1,0 +1,37 @@
+---
+import AranduGlyph from './AranduGlyph.astro';
+
+interface Props {
+  size?: number;
+}
+
+const { size = 44 } = Astro.props;
+const textSize = size * 0.58;
+// The A glyph's visual right edge is at x=48.5 in a 60-unit viewBox,
+// leaving ~11.5 units of empty space on the right of the SVG box.
+// Negative gap compensates so "randu" sits next to the visual A, not the box edge.
+const gap = Math.round(size * (0.06 - 11.5 / 60));
+// The A glyph's visual bottom sits at y=43.5 in a 60-unit viewBox.
+// Padding-bottom offsets the text so its baseline aligns with the A legs.
+const textPaddingBottom = Math.round(size * 0.275);
+---
+
+<div class="wordmark" style={`gap: ${gap}px`}>
+  <AranduGlyph {size} />
+  <span class="wordmark-text" style={`font-size: ${textSize}px; padding-bottom: ${textPaddingBottom}px`}>randu</span>
+</div>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    align-items: flex-end;
+  }
+
+  .wordmark-text {
+    font-family: var(--font-mono);
+    font-weight: 400;
+    color: var(--color-muted);
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+</style>
