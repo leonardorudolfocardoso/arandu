@@ -4,6 +4,7 @@ import Container from '../components/Container.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
+import AranduWordmark from '../components/AranduWordmark.astro';
 ---
 
 <Layout
@@ -14,26 +15,20 @@ import { projects } from '../data/projects';
 
     <Section>
       <div class="hero">
-        <p class="hero-label">Leonardo Cardoso</p>
-        <h1 class="hero-headline">Backend engineer building reliable systems, APIs, and developer tools</h1>
-        <p class="hero-lead">
-          I design pragmatic software for real production constraints: asynchronous
-          workflows, event-driven systems, cloud infrastructure, and developer
-          experience.
-        </p>
-        <p class="hero-sub">
-          Arandu means knowledge in Tupi-Guarani. This is where I show how I think,
-          what I build, and the engineering tradeoffs behind it.
-        </p>
+        <div class="hero-wordmark">
+          <AranduWordmark size={48} />
+          <p class="hero-caption">knowledge, in Tupi-Guarani</p>
+        </div>
+        <h1 class="hero-headline">Building reliable<br/>backend systems,<br/>APIs, and developer tools</h1>
 
         <div class="hero-actions">
-          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer" class="button button-primary">GitHub</a>
-          <a href="https://www.linkedin.com/in/leonardo-rudolfo-cardoso-a8b420183/" target="_blank" rel="noopener noreferrer" class="button button-secondary">LinkedIn</a>
+          <a href="#work" class="button button-primary">See my work</a>
+          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer" class="button button-secondary">GitHub</a>
         </div>
       </div>
     </Section>
 
-    <Section title="Selected Work">
+    <Section title="Selected Work" id="work">
       <div class="projects">
         {projects.map((project) => <ProjectCard {...project} />)}
       </div>
@@ -75,45 +70,37 @@ import { projects } from '../data/projects';
 <style>
   /* Hero */
   .hero {
-    padding-block: 5rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-block: 15vh 4rem;
   }
 
-  .hero-label {
+  .hero-wordmark {
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-caption {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--color-accent);
-    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 0.5rem;
   }
 
   .hero-headline {
-    max-width: 12ch;
+    max-width: 640px;
     font-size: clamp(2.2rem, 6vw, 4.5rem);
     font-weight: 600;
-    line-height: 1.05;
+    line-height: 1.1;
     color: var(--color-text);
-    margin-bottom: 1rem;
-  }
-
-  .hero-lead {
-    max-width: 58ch;
-    font-size: 1.05rem;
-    color: var(--color-text);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-
-  .hero-sub {
-    max-width: 58ch;
-    font-size: 0.95rem;
-    color: var(--color-muted);
-    line-height: 1.8;
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
   }
 
   .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
   .button {
@@ -148,10 +135,12 @@ import { projects } from '../data/projects';
   }
 
   .button-secondary {
-    color: var(--color-text);
+    color: var(--color-muted);
+    border-color: rgba(255, 255, 255, 0.22);
   }
 
   .button-secondary:hover {
+    background: rgba(255, 255, 255, 0.06);
     border-color: var(--color-accent);
     color: var(--color-accent);
   }
@@ -226,7 +215,7 @@ import { projects } from '../data/projects';
 
   @media (max-width: 640px) {
     .hero {
-      padding-block: 4rem 1rem;
+      padding-block: 12vh 3rem;
     }
 
     .hero-headline {
