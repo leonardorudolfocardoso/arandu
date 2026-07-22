@@ -1,43 +1,78 @@
-# Astro Starter Kit: Minimal
+# Arandu
 
-```sh
-npm create astro@latest -- --template minimal
-```
+My personal portfolio, focused on backend systems, APIs, cloud infrastructure, and developer tooling.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+“Arandu” means knowledge or wisdom in Tupi-Guarani. The site reflects that idea through a calm, minimal design centered on engineering decisions and practical system design.
 
-## 🚀 Project Structure
+## Tech stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- Astro 6
+- TypeScript in strict mode
+- Plain CSS with custom properties
+- Static site generation
+
+No client-side framework or CSS framework is used.
+
+## Projects
+
+The portfolio currently includes case studies for:
+
+- IncidentLens
+- Hookbox
+- Ticket Analyzer
+- Apidiff
+- Themis
+- Jobers
+
+Each project has a generated detail page covering its problem, approach, and key engineering decisions.
+
+Project content is maintained in [`src/data/projects.ts`](src/data/projects.ts).
+
+## Project structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/        Reusable UI components
+├── data/              Project content and types
+├── layouts/           Shared page shell and metadata
+├── pages/
+│   ├── index.astro    Portfolio homepage
+│   └── projects/
+│       └── [slug].astro
+└── styles/
+    └── global.css     Design tokens and global styles
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro generates the project pages statically from the project data during the build.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Local development
 
-Any static assets, like images, can be placed in the `public/` directory.
+Requires Node.js 22.12 or newer.
 
-## 🧞 Commands
+```bash
+npm install
+npm run dev
+```
 
-All commands are run from the root of the project, from a terminal:
+The development server runs at [localhost:4321](http://localhost:4321).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Commands
 
-## 👀 Want to learn more?
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Build the production site into `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run astro -- <command>` | Run an Astro CLI command |
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Design direction
+
+Arandu is designed around:
+
+- Quiet confidence
+- Clear technical communication
+- Generous whitespace
+- Restrained interaction
+- Accessible, readable typography
+
+The visual system uses a dark background, muted text, and a green accent, with Inter and JetBrains Mono as its primary typefaces.
