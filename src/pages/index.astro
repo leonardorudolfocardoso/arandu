@@ -18,6 +18,8 @@ import AranduWordmark from '../components/AranduWordmark.astro';
         <p class="hero-summary">
           I have 4+ years of experience building and maintaining production APIs
           and cloud systems with Python, TypeScript/Node.js, Rust, and AWS.
+          I have taken features from requirements discussions with product and
+          clients through implementation, deployment, and production support.
         </p>
         <p class="hero-availability">
           Based in Brazil. Open to remote roles and contract work.
@@ -34,29 +36,89 @@ import AranduWordmark from '../components/AranduWordmark.astro';
           <article>
             <h3>Arqgen</h3>
             <p class="experience-role">Software Developer · Aug 2022 – Jan 2026</p>
-            <p>
-              Built and maintained backend services in Python, Node.js, and Rust.
-              My work included an async Rust API for warehouse construction
-              estimates, parallel AWS Step Functions workflows combining Python
-              and Rust, and repeatable deployments with SST.
-            </p>
-            <p>
-              I also developed interactive layout visualization in React and
-              investigated backend and frontend bugs in production.
-            </p>
+            <ul class="experience-details">
+              <li>
+                Led delivery of a warehouse budget-estimation product from
+                requirements through client reviews, and built its Tokio-based
+                Rust Lambda API for domain entities, budget calculations, and
+                floor-plan elements.
+              </li>
+              <li>
+                Built a Rust subscriber to map Autodesk-converted DWG geometry
+                to domain entities, validate polygons and required layers, persist
+                results to MongoDB, and report outcomes through AppSync GraphQL.
+                Extended proprietary Rust geometry libraries with operations,
+                bug fixes, and computation tests.
+              </li>
+              <li>
+                Designed parallel Step Functions workflows, integrated an existing
+                Rust CLI with Python subprocesses, and debugged serialization and
+                timeout failures. Built EventBridge integrations to decouple
+                asynchronous workflows.
+              </li>
+              <li>
+                Maintained production Python and Node.js services and investigated
+                issues with CloudWatch. Worked in an SST-based TypeScript monorepo
+                for repeatable deployments and built custom Docker images for
+                Python Lambda dependencies.
+              </li>
+              <li>
+                Developed interactive React layout visualization and editing with
+                react-konva and Chakra UI, replacing static images with selectable
+                objects and editable dimensions. Integrated APIs and WebSockets
+                and fixed production frontend bugs.
+              </li>
+            </ul>
           </article>
           <article>
             <h3>Hype Empreendimentos</h3>
             <p class="experience-role">Junior Software Developer · Mar 2021 – Aug 2022</p>
-            <p>
-              Built a NestJS backend for an investing application, maintained
-              internal Node.js APIs, and extended a PostgreSQL-backed ETL pipeline
-              with TypeScript and TypeORM.
-            </p>
-            <p>
-              I also developed a Next.js property marketing website with
-              API-sourced listings and content managed through Strapi.
-            </p>
+            <ul class="experience-details">
+              <li>
+                Built a NestJS and TypeScript backend for an investing mobile
+                application, applying TDD and separating business rules from
+                framework and infrastructure concerns.
+              </li>
+              <li>
+                Maintained internal Node.js APIs shipped through the team's GitLab
+                CI pipelines. Extended a PostgreSQL-backed ETL pipeline with
+                TypeScript, TypeORM, SQL joins, aggregations, and insert/update
+                queries.
+              </li>
+              <li>
+                Developed a property marketing website with Next.js Pages Router
+                (SSG/ISR) and Chakra UI, integrating API-sourced listings and
+                Strapi-managed content that updated without a code deployment.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+
+      <Section title="Education and research">
+        <div class="experience">
+          <article>
+            <h3>Federal University of Santa Catarina (UFSC)</h3>
+            <p class="experience-role">Bachelor's Degree in Civil Infrastructure Engineering · 2021</p>
+            <ul class="experience-details">
+              <li>
+                <strong>XPS Peak Finder, 2018:</strong> Co-authored a research
+                poster about GUI software for spectra analysis; received the
+                Best Poster Award at the XII Encontro de Física do Instituto
+                Tecnológico de Aeronáutica (ITA), 2018.
+              </li>
+              <li>
+                <strong>Undergraduate research, 2018–2019:</strong> Implemented
+                and analyzed a C++ Lattice Boltzmann simulation to validate an
+                experimental setup for microchannel flows.
+              </li>
+              <li>
+                <strong>Linear Algebra teaching assistant:</strong> Selected by
+                academic performance for three semesters. Helped prepare exercise
+                lists in LaTeX and supported students with problem solving and
+                explanations of concepts.
+              </li>
+            </ul>
           </article>
         </div>
       </Section>
@@ -141,6 +203,20 @@ import AranduWordmark from '../components/AranduWordmark.astro';
   .experience .experience-role {
     margin-top: 0.25rem;
     font-size: 0.85rem;
+  }
+
+  .experience-details {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .experience-details strong {
+    color: var(--color-text);
+    font-weight: 500;
   }
 
   .footer {
