@@ -2,224 +2,152 @@
 import Layout from '../layouts/Layout.astro';
 import Container from '../components/Container.astro';
 import Section from '../components/Section.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
 import AranduWordmark from '../components/AranduWordmark.astro';
 ---
 
 <Layout
   title="Leonardo Cardoso | Backend Engineer"
-  description="Backend engineer building reliable systems, APIs, and developer tools with Python, Rust, AWS, and distributed systems."
+  description="Software engineer with 4+ years of production experience building backend APIs and cloud systems with Python, TypeScript, Rust, and AWS."
 >
   <Container>
-
-    <Section>
-      <div class="hero">
-        <div class="hero-wordmark">
-          <AranduWordmark size={48} />
-          <p class="hero-caption">knowledge, in Tupi-Guarani</p>
-        </div>
-        <h1 class="hero-headline">Building reliable<br/>backend systems,<br/>APIs, and developer tools</h1>
-
-        <div class="hero-actions">
-          <a href="#work" class="button button-primary">See my work</a>
-          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer" class="button button-secondary">GitHub</a>
-        </div>
-      </div>
-    </Section>
-
-    <Section title="Selected Work" id="work">
-      <div class="projects">
-        {projects.map((project) => <ProjectCard {...project} />)}
-      </div>
-    </Section>
-
-    <Section title="About">
-      <p class="about">
-        I build backend systems and developer tools with a focus on reliability,
-        clarity, and real-world constraints. My recent work spans Python services,
-        Rust CLIs, AWS serverless systems, and LLM-backed workflows with strong
-        validation and operational discipline.
-      </p>
-    </Section>
-
-    <Section title="Contact">
-      <div class="contact-panel">
-        <p class="contact-copy">
-          If you are hiring for backend, platform, or developer tooling work, I am
-          open to conversations about full-time roles and collaborative projects.
+    <main>
+      <header class="hero">
+        <AranduWordmark size={32} />
+        <h1>Leonardo Cardoso</h1>
+        <p class="hero-role">Software engineer focused on backend systems</p>
+        <p class="hero-summary">
+          I have 4+ years of experience building and maintaining production APIs
+          and cloud systems with Python, TypeScript/Node.js, Rust, and AWS.
         </p>
-        <div class="contact-actions">
-          <a href="mailto:leonardorudolfocardoso@gmail.com" class="button button-primary">leonardorudolfocardoso@gmail.com</a>
+        <p class="hero-availability">
+          Based in Brazil. Open to remote roles and contract work.
+        </p>
+        <nav class="contact-links" aria-label="Contact and professional profiles">
+          <a href="mailto:leonardorudolfocardoso@gmail.com">Email →</a>
+          <a href="https://www.linkedin.com/in/leonardo-rudolfo-cardoso-a8b420183/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </nav>
+      </header>
+
+      <Section title="Professional experience">
+        <div class="experience">
+          <article>
+            <h3>Arqgen</h3>
+            <p class="experience-role">Software Developer · Aug 2022 – Jan 2026</p>
+            <p>
+              Built and maintained backend services in Python, Node.js, and Rust.
+              My work included an async Rust API for warehouse construction
+              estimates, parallel AWS Step Functions workflows combining Python
+              and Rust, and repeatable deployments with SST.
+            </p>
+            <p>
+              I also developed interactive layout visualization in React and
+              investigated backend and frontend bugs in production.
+            </p>
+          </article>
+          <article>
+            <h3>Hype Empreendimentos</h3>
+            <p class="experience-role">Junior Software Developer · Mar 2021 – Aug 2022</p>
+            <p>
+              Built a NestJS backend for an investing application, maintained
+              internal Node.js APIs, and extended a PostgreSQL-backed ETL pipeline
+              with TypeScript and TypeORM.
+            </p>
+            <p>
+              I also developed a Next.js property marketing website with
+              API-sourced listings and content managed through Strapi.
+            </p>
+          </article>
         </div>
-      </div>
-    </Section>
+      </Section>
+    </main>
 
     <footer class="footer">
-      <nav class="links" aria-label="Social links">
-        <a href="https://github.com/leonardorudolfocardoso" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/leonardo-rudolfo-cardoso-a8b420183/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="mailto:leonardorudolfocardoso@gmail.com">Email</a>
-      </nav>
-      <p class="footer-copy">© 2026 Leonardo Cardoso</p>
+      <p>© 2026 Leonardo Cardoso</p>
     </footer>
-
   </Container>
 </Layout>
 
 <style>
-  /* Hero */
   .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-block: 15vh 4rem;
+    padding-block: 4rem 2rem;
   }
 
-  .hero-wordmark {
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-caption {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--color-muted);
-    margin-top: 0.5rem;
-  }
-
-  .hero-headline {
-    max-width: 640px;
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
+  h1 {
+    margin-top: 2rem;
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
     font-weight: 600;
-    line-height: 1.1;
-    color: var(--color-text);
-    margin-bottom: 2rem;
+    line-height: 1.15;
   }
 
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .hero-role {
+    margin-top: 1rem;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
   }
 
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition:
-      border-color var(--transition),
-      background-color var(--transition),
-      color var(--transition),
-      transform var(--transition);
-  }
-
-  .button:hover {
-    transform: translateY(-1px);
-  }
-
-  .button-primary {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: #0b0f14;
-  }
-
-  .button-primary:hover {
-    background: #98f0a0;
-    border-color: #98f0a0;
-  }
-
-  .button-secondary {
-    color: var(--color-muted);
-    border-color: rgba(255, 255, 255, 0.22);
-  }
-
-  .button-secondary:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: var(--color-accent);
-    color: var(--color-accent);
-  }
-
-  /* Projects grid */
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
-
-  /* About */
-  .about {
-    font-size: 0.98rem;
-    color: var(--color-muted);
+  .hero-summary {
     max-width: 60ch;
-    line-height: 1.8;
-  }
-
-  .contact-panel {
-    display: grid;
-    gap: 1rem;
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-left: 2px solid var(--color-accent);
-    border-radius: 12px;
-  }
-
-  .contact-copy {
-    max-width: 58ch;
+    margin-top: 1.5rem;
     color: var(--color-muted);
     line-height: 1.8;
   }
 
-  .contact-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  /* Footer */
-  .footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding-block: 2rem 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .links {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .links a {
-    font-size: 0.85rem;
+  .hero-availability {
+    margin-top: 1rem;
     color: var(--color-muted);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    margin-top: 2rem;
+  }
+
+  .contact-links a {
+    padding-block: 0.5rem;
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
     transition: color var(--transition);
   }
 
-  .links a:hover {
+  .contact-links a:hover {
     color: var(--color-text);
   }
 
-  .footer-copy {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--color-muted);
+  .contact-links a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
   }
 
-  @media (max-width: 640px) {
-    .hero {
-      padding-block: 12vh 3rem;
-    }
+  .experience {
+    display: grid;
+    gap: 2.5rem;
+    max-width: 65ch;
+  }
 
-    .hero-headline {
-      max-width: none;
-    }
+  .experience h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+
+  .experience p {
+    margin-top: 0.75rem;
+    color: var(--color-muted);
+    line-height: 1.8;
+  }
+
+  .experience .experience-role {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    padding-block: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
   }
 </style>
