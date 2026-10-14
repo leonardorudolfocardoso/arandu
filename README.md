@@ -13,20 +13,11 @@ My personal portfolio, focused on backend systems, APIs, cloud infrastructure, a
 
 No client-side framework or CSS framework is used.
 
-## Projects
+## Content
 
-The portfolio currently includes case studies for:
+The homepage presents professional experience: a hero with contact links, followed by work history at Arqgen and Hype Empreendimentos.
 
-- IncidentLens
-- Hookbox
-- Ticket Analyzer
-- Apidiff
-- Themis
-- Jobers
-
-Each project has a generated detail page covering its problem, approach, and key engineering decisions.
-
-Project content is maintained in [`src/data/projects.ts`](src/data/projects.ts).
+Personal projects (IncidentLens, Hookbox, Ticket Analyzer, Apidiff, Themis, Jobers) are not featured on the homepage for now, since they don't demonstrate professional experience. Their case-study pages are still generated at `/projects/<slug>` from [`src/data/projects.ts`](src/data/projects.ts) and can be linked again later.
 
 ## Project structure
 
@@ -43,7 +34,7 @@ src/
     └── global.css     Design tokens and global styles
 ```
 
-Astro generates the project pages statically from the project data during the build.
+Astro generates the (unlinked) project pages statically from the project data during the build.
 
 ## Local development
 

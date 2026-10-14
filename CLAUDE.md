@@ -33,26 +33,24 @@ UI rules: no gradients, no heavy shadows, subtle transitions at `0.2s ease`, gen
 
 ## Site Structure
 
-Single-page homepage with four sections in order:
-1. **Hero** — "Arandu / Systems, APIs and developer tools / by Leonardo Cardoso"
-2. **Selected Work** — 3–4 project cards (IncidentLens, Hookbox, Ticket Analyzer, Apidiff)
-3. **About** — Short bio paragraph
-4. **Links** — GitHub, LinkedIn
+Single-page homepage focused on professional experience:
+1. **Hero** — name, role, short summary, availability, and contact links (Email, LinkedIn, GitHub)
+2. **Professional experience** — Arqgen and Hype Empreendimentos
 
-Optional `/projects` page for expanded project listing.
+Personal projects (IncidentLens, Hookbox, Ticket Analyzer, Apidiff, Themis, Jobers) are intentionally not featured on the homepage: they don't demonstrate professional experience. Their data (`src/data/projects.ts`), `ProjectCard` and `/projects/[slug]` pages are kept in place and can be re-surfaced later.
 
 ## Git Conventions
 
 - Use semantic commit messages (`feat:`, `fix:`, `docs:`, `style:`, `refactor:`, `chore:`, etc.)
 - Do not add `Co-Authored-By` trailers
 
-## Components to Build
+## Components
 
-Reusable components live in `src/components/`:
-- `Layout` — page shell
-- `ProjectCard` — name, short description, tag highlights, subtle hover border/glow
+Reusable components live in `src/components/` (the page shell is `src/layouts/Layout.astro`):
+- `ProjectCard` — name, short description, tag highlights, subtle hover border/glow (currently unused on the homepage)
 - `Section` — consistent section wrapper
 - `Container` — max-width content wrapper
+- `AranduGlyph` / `AranduWordmark` — brand mark
 
 ## Tone
 
