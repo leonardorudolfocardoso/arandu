@@ -13,7 +13,7 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 ---
 
-<Layout title={`${project.name} — Arandu`} description={project.description}>
+<Layout title={`${project.name} — Arandu`} description={project.description} noindex>
   <Container>
     <article class="project">
       <header class="project-header">

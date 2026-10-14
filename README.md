@@ -17,7 +17,7 @@ No client-side framework or CSS framework is used.
 
 The homepage presents professional experience: a hero with contact links, followed by work history at Arqgen and Hype Empreendimentos.
 
-Personal projects (IncidentLens, Hookbox, Ticket Analyzer, Apidiff, Themis, Jobers) are not featured on the homepage for now, since they don't demonstrate professional experience. Their case-study pages are still generated at `/projects/<slug>` from [`src/data/projects.ts`](src/data/projects.ts) and can be linked again later.
+Personal projects (IncidentLens, Hookbox, Ticket Analyzer, Apidiff, Themis, Jobers) are not featured on the homepage for now, since they don't demonstrate professional experience. Their case-study pages are still generated at `/projects/<slug>` from [`src/data/projects.ts`](src/data/projects.ts) and can be linked again later. They are marked `noindex, nofollow` so search engines skip them.
 
 ## Project structure
 
